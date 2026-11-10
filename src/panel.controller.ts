@@ -64,6 +64,12 @@ export class PanelController {
     return this.haciaElBff('GET', '/panel/todos', authorization);
   }
 
+  // L10: el panel en vivo. El gateway revisa el token y el scope; el rol (bibliotecarios) lo revisa el BFF.
+  @Get('en-vivo')
+  async enVivo(@Headers('authorization') authorization?: string) {
+    return this.haciaElBff('GET', '/panel/en-vivo', authorization);
+  }
+
   @Post('prestamos')
   async prestar(
     @Headers('authorization') authorization?: string,
